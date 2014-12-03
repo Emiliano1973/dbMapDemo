@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc"
+ xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+  http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
+  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+  <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location">
+            <value>/WEB-INF/context.properties</value>
+        </property>
+    </bean>  
+    
+ <context:property-placeholder properties-ref="configProperties" />
+  
+ <context:component-scan base-package="it.echi.rest.controllers" />
+ <mvc:annotation-driven />
+
+ <bean id="dataSource"
+  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+  <property name="driverClassName" value="${jdbc.driverClassName}" />
+  <property name="url" value="${jdbc.url}" />
+  <property name="username" value="${jdbc.user}" />
+  <property name="password" value="${jdbc.password}" />
+ </bean>
+
+ <bean id="sessionFactory"
+  class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+  <property name="dataSource" ref="dataSource" />
+  <property name="annotatedClasses">
+   <list>
+    <value>it.echi.beans.Country</value>
+    <value>it.echi.beans.Region</value>
+    <value>it.echi.beans.Town</value>    
+   </list>
+  </property>
+  <property name="hibernateProperties">
+   <props>
+    <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+    <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+   </props>
+  </property>
+ </bean>
+
+ <!--   bean id="txManager"
+  class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+  <property name="sessionFactory" ref="sessionFactory" />
+ </bean -->
+
+ <!--   bean id="persistenceExceptionTranslationPostProcessor"
+  class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" / -->
+
+ <bean id="countryDAO" class="it.echi.stores.impl.CountryDAOImpl"></bean>
+ <bean id="countryService" class="it.echi.services.impl.CountryServiceImpl"></bean>
+ 
+  <bean id="regionDAO" class="it.echi.stores.impl.RegionDAOImpl"></bean>
+ <bean id="regionService" class="it.echi.services.impl.RegionServiceImpl"></bean>
+ 
+  <bean id="townDAO" class="it.echi.stores.impl.TownDAOImpl"></bean>
+ <bean id="townService" class="it.echi.services.impl.TownServiceImpl"></bean>
+ 
+</beans>

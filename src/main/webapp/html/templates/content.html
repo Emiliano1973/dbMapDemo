@@ -1,0 +1,40 @@
+
+<div style="display:table;background-color:red;  margin:0px; height:100px; width:600px">
+	<div style="display:table-row; ">
+			<div style="display:table-cell; width:50px;  margin-bottom:0;">
+				<img ng-src="../img/flags/{{selectionCountry}}.png"  />	
+			</div>
+			
+			<div style="display:table-cell;">
+				<select ng-model="selectionCountry" ng-change="changeRegions(selectionCountry)"  ng-options="obj.code as obj.description for obj in countries" ng-init="init()">
+				<option value=""></option> 
+				</select>		
+			</div>
+
+			<div style="display:table-cell; width:50px; ">
+						
+			</div>
+			
+			<div style="display:table-cell;">
+				<select ng-model="selectionReg" cs-disabled="{{disableRegion}}" ng-change="changeTowns(selectionReg)" ng-options="obj.idRegion as obj.description for obj in regions"> 
+					<option value=""></option>
+				</select>		
+			</div>
+			
+
+			<div style="display:table-cell; width:50px; ">
+				
+			</div>
+			
+			<div style="display:table-cell;">
+				<select ng-model="selectionTown" cs-disabled="{{disableTown}}" ng-change="fullMapTown(selectionTown)"  ng-options="obj.postcode as obj.postcode + '-' + obj.town for obj in towns"> 
+					<option value=""></option>
+				</select>		
+			</div>
+
+	</div>
+
+</div>
+<img ng-src="../img/flagMaps/Flag_map_{{selectionCountry}}.png" ng-model="mapImageVisibile" cs-visible="mapImageVisibile"  style="margin-top:0px;" />
+<br/>
+<google-Map gg-options="opts"    id="map-canvas"></google-Map>
