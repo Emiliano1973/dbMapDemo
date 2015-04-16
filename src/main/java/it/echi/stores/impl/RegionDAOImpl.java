@@ -51,13 +51,7 @@ public class RegionDAOImpl implements RegionDAO {
 			session = this.sessionFactory.openSession();
 			Criteria cr = session.createCriteria(Region.class, "re").addOrder(Order.asc("re.description"));
 			 
-						/*
-					.setFetchMode("countryBean", FetchMode.JOIN)
-					.add(Restrictions.eq("country", code));*/
-			regions = cr/*
-					.setFetchMode("re.countryBean", FetchMode.JOIN)
-					.setFetchMode("re.towns", FetchMode.JOIN)
-					*/.add(Restrictions.eq("re.countryBean.country", code)).add(Restrictions.and(Restrictions.isNotNull("re.towns"), Restrictions.isNotEmpty("re.towns"))).list();
+			regions = cr.add(Restrictions.eq("re.countryBean.country", code)).add(Restrictions.and(Restrictions.isNotNull("re.towns"), Restrictions.isNotEmpty("re.towns"))).list();
 		} catch (HibernateException e) {
 			throw new DAOException("Error in  getRegionsByCountryCode:"+e.getMessage(), e);
 		}

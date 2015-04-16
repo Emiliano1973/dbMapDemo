@@ -8,17 +8,13 @@ public class RegionBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int idRegion;
-	private String countryCode;
-	private String description;
-	
-	public RegionBean() {
-		super();
-	}
-
+	private final int idRegion;
+	private final String countryCode;
+	private final String description;
+	 
 
 	public RegionBean(int idRegion, String description, String countryCode) {
-		this();
+		super();
 		this.idRegion=idRegion;
 		this.description=description;
 		this.countryCode=countryCode;
@@ -28,26 +24,14 @@ public class RegionBean implements Serializable {
 		return idRegion;
 	}
 
-	public void setIdRegion(int idRegion) {
-		this.idRegion = idRegion;
-	}
 
 	public String getCountryCode() {
 		return countryCode;
 	}
 
-	public void setCountryCode(String countryCode) {
-		this.countryCode = countryCode;
-	}
 
 	public String getDescription() {
 		return description;
 	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
 	
-	
-
 }

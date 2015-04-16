@@ -11,14 +11,11 @@ public class ErrorMessage implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String code;
-	private String message;
-	public ErrorMessage() {
-		super();
-	}
+	private final String code;
+	private final String message;
 
 	public ErrorMessage(String code, String message) {
-		this();
+		super();
 		this.code=code;
 		this.message=message;
 	}
@@ -27,17 +24,11 @@ public class ErrorMessage implements Serializable {
 		return code;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
-	}
 
 	public String getMessage() {
 		return message;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
 
 
 	
