@@ -2,7 +2,7 @@ package it.echi.services.beans;
 
 import java.io.Serializable;
 
-public class TownBean implements Serializable {
+public final class TownBean implements Serializable {
 
 	/**
 	 * 
@@ -25,19 +25,19 @@ public class TownBean implements Serializable {
 
 	public TownBean(
 
-	String postcode,
+	final String postcode,
 
-	int eastings,
+	final int eastings,
 
-	double latitude,
+	final double latitude,
 
-	double longitude,
+	final double longitude,
 	
-	int northings,
+	final int northings,
 
-	String town,
+	final String town,
 
-	int regionId) {
+	final int regionId) {
 		this.postcode = postcode;
 
 		this.eastings = eastings;

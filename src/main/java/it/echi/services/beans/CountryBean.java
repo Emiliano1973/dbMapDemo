@@ -2,7 +2,7 @@ package it.echi.services.beans;
 
 import java.io.Serializable;
 
-public class CountryBean implements Serializable {
+public final class CountryBean implements Serializable {
 
 	/**
 	 * 
@@ -12,7 +12,7 @@ public class CountryBean implements Serializable {
 	private final String description;
 	
 	
-	public CountryBean(String code, String description) {
+	public CountryBean(final String code,final String description) {
 		super();
 		this.code=code;
 		this.description=description;

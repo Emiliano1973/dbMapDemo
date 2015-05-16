@@ -23,7 +23,6 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  */
 @Entity
 @javax.persistence.Table(name="Region")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Region implements Serializable {
 	
 	@javax.persistence.Transient

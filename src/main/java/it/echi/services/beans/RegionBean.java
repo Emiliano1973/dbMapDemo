@@ -2,7 +2,7 @@ package it.echi.services.beans;
 
 import java.io.Serializable;
 
-public class RegionBean implements Serializable {
+public final class RegionBean implements Serializable {
 
 	/**
 	 * 
@@ -13,7 +13,7 @@ public class RegionBean implements Serializable {
 	private final String description;
 	 
 
-	public RegionBean(int idRegion, String description, String countryCode) {
+	public RegionBean(final int idRegion,final String description,final String countryCode) {
 		super();
 		this.idRegion=idRegion;
 		this.description=description;
